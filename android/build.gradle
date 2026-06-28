@@ -5,10 +5,10 @@ buildscript {
         // mohomin123: kotlin lastest stable version
         kotlin_version = "1.7.20"
 
-        buildToolsVersion = "30.0.2"
+        buildToolsVersion = "33.0.2"
         minSdkVersion = 21
-        compileSdkVersion = 30
-        targetSdkVersion = 30
+        compileSdkVersion = 33
+        targetSdkVersion = 33
 
         supportLibVersion = '29.0.0'
         kotlinVersion = '1.6.10'
@@ -53,9 +53,13 @@ allprojects {
             // Android JSC is installed from npm
             url(new File(["node", "--print", "require.resolve('jsc-android/package.json')"].execute(null, rootDir).text.trim(), "../dist"))
         }
+        maven {
+            url "$rootDir/app/libs"
+        }
 
         google()
         mavenCentral()
+        maven { url 'https://maven.google.com' }
         jcenter()
         maven { url 'https://www.jitpack.io' }
     }
